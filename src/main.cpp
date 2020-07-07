@@ -35,7 +35,7 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
-#include "Timer.h"
+//#include "Timer.h"
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -44,11 +44,11 @@ char auth[] = "y4FymVfd0jwpmpcVhoPLLTws1qlNcIMI";
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-//char ssid[] = "TP-LINK_4AA8";
-//char pass[] = "zefira13";
+char ssid[] = "TP-LINK_4AA8";
+char pass[] = "zefira13";
 
-char ssid[] = "StudioAllais";
-char pass[] = "Odontoiatria17";
+//char ssid[] = "StudioAllais";
+//char pass[] = "Odontoiatria17";
 
 
 
