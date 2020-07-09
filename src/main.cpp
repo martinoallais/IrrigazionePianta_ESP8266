@@ -49,11 +49,15 @@ char auth[] = "y4FymVfd0jwpmpcVhoPLLTws1qlNcIMI";
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "TP-LINK_4AA8";
-char pass[] = "zefira13";
+// char ssid[] = "TP-LINK_4AA8";
+// char pass[] = "zefira13";
 
 //char ssid[] = "StudioAllais";
 //char pass[] = "Odontoiatria17";
+
+char ssid[] = "TIM-18898667-2_4GHz";
+char pass[] = "CBZUMMGpjn8CNK9elm7wW8ww";
+
 
 WidgetLED ledPump(V1);
 
@@ -124,7 +128,7 @@ void setup()
   Blynk.begin(auth, ssid, pass);
 
 
-  
+
 
   
   Serial.println("Initialization Done");
@@ -150,12 +154,13 @@ void loop()
 BLYNK_READ(V0) //MOISTURE SENSOR
 {
   int sensorData = analogRead(A0); //reading the sensor on A0
-  Blynk.virtualWrite(V0, sensorData); //sending to Blynk
+ 
   
-  moistValue = sensorData;
+  moistValue = map(soilMoistureValue, AirValue, WaterValue, 0, 100);
+  Blynk.virtualWrite(V0, moistValue); //sending to Blynk
 
   Serial.print("Moisture sensor: ");
-  Serial.println(sensorData);
+  Serial.println(moistValue);
   // lcd.clear();
   // lcd.print(0, 1, "Moi: "+sensorData);
 
@@ -172,7 +177,6 @@ BLYNK_READ(V1) //PUMP TOGGLE
   else{
     ledPump.off();
   } 
-  // Blynk.virtualWrite(V1, pumpData);   //sending to Blynk
   
 }
 
